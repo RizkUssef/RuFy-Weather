@@ -229,13 +229,22 @@ body .main_section .left {
 }
 body .main_section .left .location {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+body .main_section .left .location .city {
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   gap: 30px;
 }
-body .main_section .left .location img {
+body .main_section .left .location .city img {
   width: 50px;
+}
+body .main_section .left .location .date {
+  margin-left: 10px;
 }
 body .main_section .right {
   width: 50%;
@@ -311,6 +320,12 @@ body .main_section .right .days .day .date {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+body .main_section .right .days .day .date .condition {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
 }
 body .main_section .right .days .day .img {
   align-self: flex-end;

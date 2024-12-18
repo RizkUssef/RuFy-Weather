@@ -21,10 +21,16 @@ body {
       @include flex(column, center, flex-start);
       gap: 50px;
       .location {
-        @include flex(row, flex-start, center);
-        gap: 30px;
-        img {
-          width: 50px;
+        @include flex(column, flex-start, flex-start);
+        .city{
+          @include flex(row, flex-start, center);
+          gap: 30px;
+          img {
+            width: 50px;
+          }
+        }
+        .date{
+          margin-left: 10px;
         }
       }
     }
@@ -82,6 +88,12 @@ body {
           .date {
             width: 100%;
             @include flex(row, space-between, center);
+            .condition{
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              max-width: 200px;
+            }
           }
           .img {
             align-self: flex-end;
