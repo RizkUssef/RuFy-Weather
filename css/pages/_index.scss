@@ -1,0 +1,164 @@
+@import "../base/typography";
+@import "../abstracts/mixins";
+body {
+  font-family: $font-primary;
+  header {
+    position: fixed;
+    padding: 20px 0 0 20px;
+    img {
+      width: 130px;
+    }
+  }
+  .main_section {
+    background-image: url(../../img/autumn.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    @include flex();
+    .left {
+      margin-left: 100px;
+      @include flex(column, center, flex-start);
+      gap: 50px;
+      .location {
+        @include flex(row, flex-start, center);
+        gap: 30px;
+        img {
+          width: 50px;
+        }
+      }
+    }
+    .right {
+      width: 50%;
+      @include flex(column, center, center);
+      gap: 50px;
+      margin-right: 50px;
+      .search {
+        width: 100%;
+        form {
+          @include flex(row, flex-start, center);
+          input {
+            width: 88%;
+            font-size: 25px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(7px);
+            border-radius: 15px 0 0 15px;
+          }
+          button {
+            width: 10%;
+            font-family: $font-primary;
+            font-size: 25px;
+            padding: 10px;
+            border-radius: 0 15px 15px 0;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              background-color: #dcdada;
+            }
+          }
+        }
+      }
+      .days {
+        width: 100%;
+        @include flex(row, center, center);
+        flex-wrap: wrap;
+        gap: 50px;
+        .active {
+          box-shadow: 0 0 25px 15px rgba(0, 0, 0, 0.5);
+          transform: scale(1.1);
+        }
+        .day {
+          @include flex(column, center, center);
+          width: 45%;
+          padding: 10px;
+          background-color: rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(7px);
+          border-radius: 15px;
+          .day_name,
+          .degree {
+            align-self: flex-start;
+          }
+          .date {
+            width: 100%;
+            @include flex(row, space-between, center);
+          }
+          .img {
+            align-self: flex-end;
+            padding-right: 50px;
+            img {
+              width: 70px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .loading {
+    position: fixed;
+    width: 100%;
+    // height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(148, 106, 106);
+    z-index: 999;
+    @include flex(row,center,center);
+    .loader {
+        display: block;
+        z-index: 9999;
+      color: #ffffff;
+      font-size: 45px;
+      text-indent: -9999em;
+      overflow: hidden;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      position: relative;
+      transform: translateZ(0);
+      animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
+    }
+  
+    @keyframes mltShdSpin {
+      0% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+          0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+      }
+      5%,
+      95% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+          0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+      }
+      10%,
+      59% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em,
+          -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em,
+          -0.297em -0.775em 0 -0.477em;
+      }
+      20% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
+          -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em,
+          -0.749em -0.34em 0 -0.477em;
+      }
+      38% {
+        box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
+          -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em,
+          -0.82em -0.09em 0 -0.477em;
+      }
+      100% {
+        box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+          0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+      }
+    }
+  
+    @keyframes round {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

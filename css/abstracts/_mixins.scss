@@ -1,0 +1,53 @@
+@mixin flex(
+  $direction: row,
+  $justify-content: space-between,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin triangle($size: 5px, $color: #000, $direction: up) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: $size;
+  border-color: transparent;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-color: $color;
+  }
+
+  @if $direction == up {
+    border-bottom-color: $color;
+    border-width: $size;
+    margin-left: -$size;
+    bottom: -$size;
+  } @else if $direction == down {
+    border-top-color: $color;
+    border-width: $size;
+    margin-left: -$size;
+    top: -$size;
+  } @else if $direction == left {
+    border-right-color: $color;
+    border-width: $size;
+    margin-top: -$size;
+    right: -$size;
+  } @else if $direction == right {
+    border-left-color: $color;
+    border-width: $size;
+    margin-top: -$size;
+    left: -$size;
+  }
+}
