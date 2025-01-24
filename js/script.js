@@ -1,5 +1,19 @@
-let seasion = "winter";
+let seasion = "spring";
 
+
+function seasionName() {
+    // Get the query string from the URL
+    const queryString = window.location.search;
+    // Parse the query string into key-value pairs
+
+    const urlParams = new URLSearchParams(queryString);
+    // Access specific query parameters
+    const paramValue = urlParams.get('seasion'); // Replace 'key' with the parameter you want
+    if(paramValue) {
+        seasion = paramValue;
+    }   
+}
+seasionName();
 function change(bg_image, text_color, weather_icon, seasion_name) {
     $('#main_section').css("background-image", bg_image);
     $("h1, h3, h4, p, #find, #text").css("color", text_color)
@@ -25,11 +39,11 @@ $("#find").on("click", function (e) {
 getData("Cairo");
 async function getData(location) {
     try {
-        let data = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=ddc255c5f9b84eea842142909241812&q=${location}&days=4`);
+        let data = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=ddc255c5f9b84eea842142909241812&q=${location}&days=3`);
         let db = await data.json();
         if (db.error) {
             alert("Enter vaild country name jvkjbvkjblblb");
-        }else{
+        } else {
             $("#current_deg").text(`${db.current.temp_c}° C`);
             $("#city").text(db.location.name);
             $("#current_date").text(db.current.last_updated);
@@ -60,8 +74,8 @@ async function getData(location) {
             $(".days").html(cont);
             let today = new Date();
             let dateString = today.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
-            let date_num =$(".date_num").eq(0).text().split(' ')[0];
-        
+            let date_num = $(".date_num").eq(0).text().split(' ')[0];
+
             if (dateString.split("/")[1] === date_num) {
                 $(".day").eq(0).addClass("active");
             }
@@ -79,7 +93,7 @@ async function getData(location) {
                 case "summer":
                     change('url("../img/summer.jpg")', "#000", "../img/cloudy black.png", "Summer")
                     break;
-        
+
                 default:
                     change('url("../img/autumn.jpg")', "#fff", "../img/cloudy white.png", "Autumn")
                     break;

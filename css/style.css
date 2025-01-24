@@ -209,7 +209,7 @@ body header img {
   width: 130px;
 }
 body .main_section {
-  background-image: url(../../img/autumn.jpg);
+  background-image: url();
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
