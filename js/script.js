@@ -42,7 +42,7 @@ async function getData(location) {
         let data = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=ddc255c5f9b84eea842142909241812&q=${location}&days=3`);
         let db = await data.json();
         if (db.error) {
-            alert("Enter vaild country name jvkjbvkjblblb");
+            alert("Enter vaild country name");
         } else {
             $("#current_deg").text(`${db.current.temp_c}° C`);
             $("#city").text(db.location.name);
